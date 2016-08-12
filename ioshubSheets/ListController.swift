@@ -20,6 +20,7 @@ class ListController: UIViewController {
         super.viewDidLoad()
 
         self.tableView.tableFooterView = UIView()
+        self.fetchList()
         
     }
     

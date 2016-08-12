@@ -7,39 +7,24 @@
 //
 
 import UIKit
+import GoogleAPIClient
 import GTMOAuth2
 
 
 class LoginController: UIViewController {
-    private let kKeychainItemName = "Google Sheets API1"
-    private let kSpreadSheetID    = "1YLX32uGIJOieuouW_RidrEOmZknyxoPA_sZ5njAHJCw"
-    private let scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+
     private let service = GlobalGTLService.sharedInstance.service
     override func viewDidLoad() {
-        if let auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName(
-            kKeychainItemName,
-            clientID: kClientID,
-            clientSecret: nil) {
-            service.authorizer = auth
-        }
+
     }
     
     @IBAction func login(sender: AnyObject) {
-        if let authorizer = service.authorizer,
-            canAuth = authorizer.canAuthorize where canAuth {
-            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("tabBarController")
-            self.showViewController(controller!, sender: nil)
-        } else {
-            presentViewController(
-                createAuthController(),
-                animated: true,
-                completion: nil
-            )
-        }
+        self.presentViewController(createAuthController(), animated: true
+            , completion: nil)
     }
     
     private func createAuthController() -> GTMOAuth2ViewControllerTouch {
-        let scopeString = scopes.joinWithSeparator(" ")
+        let scopeString = kScopes.joinWithSeparator(" ")
         return GTMOAuth2ViewControllerTouch(
             scope: scopeString,
             clientID: kClientID,

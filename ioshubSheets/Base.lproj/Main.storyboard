@@ -9,7 +9,7 @@
         <!--Login Controller-->
         <scene sceneID="lyx-Jt-0T0">
             <objects>
-                <viewController id="zod-qq-HiC" customClass="LoginController" customModule="ioshubSheets" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginController" id="zod-qq-HiC" customClass="LoginController" customModule="ioshubSheets" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U0C-WU-lOY"/>
                         <viewControllerLayoutGuide type="bottom" id="1Im-50-hIv"/>

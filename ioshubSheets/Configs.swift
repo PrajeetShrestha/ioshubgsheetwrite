@@ -8,7 +8,9 @@
 
 import Foundation
 
-let kClientID = "797838601314-1cfrh196h43j1eqk83mtnl1484k1iuc0.apps.googleusercontent.com"
-let kSheetID  = "1YLX32uGIJOieuouW_RidrEOmZknyxoPA_sZ5njAHJCw"
-let kBaseUrl  = "https://sheets.googleapis.com/v4/spreadsheets"
+let kClientID         = "797838601314-1cfrh196h43j1eqk83mtnl1484k1iuc0.apps.googleusercontent.com"
+let kSheetID          = "1YLX32uGIJOieuouW_RidrEOmZknyxoPA_sZ5njAHJCw"
+let kBaseUrl          = "https://sheets.googleapis.com/v4/spreadsheets"
+let kKeychainItemName = "Google Sheets API1"
+let kScopes           = ["https://www.googleapis.com/auth/spreadsheets"]
 
