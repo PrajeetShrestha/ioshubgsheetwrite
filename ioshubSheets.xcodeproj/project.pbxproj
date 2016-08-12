@@ -8,18 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		0354070DA681C4854EA792EE /* Pods_ioshubSheets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 946713CA48BDE90C3AC43C9B /* Pods_ioshubSheets.framework */; };
+		4AB85E3C1D5DDBAF0065455B /* DonorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB85E3B1D5DDBAF0065455B /* DonorCell.swift */; };
 		4AFA57B01D5D976300AFB69E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA57AF1D5D976300AFB69E /* AppDelegate.swift */; };
 		4AFA57B21D5D976300AFB69E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA57B11D5D976300AFB69E /* ViewController.swift */; };
-		4AFA57B51D5D976300AFB69E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AFA57B31D5D976300AFB69E /* Main.storyboard */; };
 		4AFA57B71D5D976300AFB69E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AFA57B61D5D976300AFB69E /* Assets.xcassets */; };
 		4AFA57BA1D5D976300AFB69E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AFA57B81D5D976300AFB69E /* LaunchScreen.storyboard */; };
 		4AFA57C21D5D976C00AFB69E /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA57C11D5D976C00AFB69E /* Configs.swift */; };
 		4AFA57C41D5D98D500AFB69E /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AFA57C31D5D98D500AFB69E /* GTMOAuth2ViewTouch.xib */; };
 		4AFA57C61D5DC72D00AFB69E /* TextDrop1Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA57C51D5DC72D00AFB69E /* TextDrop1Column.swift */; };
+		4AFA57C81D5DD00500AFB69E /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA57C71D5DD00500AFB69E /* ListController.swift */; };
+		4AFA57CA1D5DD11100AFB69E /* Donor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFA57C91D5DD11100AFB69E /* Donor.swift */; };
+		4AFA57D41D5DDA1A00AFB69E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AFA57B31D5D976300AFB69E /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		08080B14E154A2F91FDB2599 /* Pods-ioshubSheets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ioshubSheets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ioshubSheets/Pods-ioshubSheets.debug.xcconfig"; sourceTree = "<group>"; };
+		4AB85E3B1D5DDBAF0065455B /* DonorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonorCell.swift; sourceTree = "<group>"; };
 		4AFA57AC1D5D976300AFB69E /* ioshubSheets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ioshubSheets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AFA57AF1D5D976300AFB69E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AFA57B11D5D976300AFB69E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +34,8 @@
 		4AFA57C11D5D976C00AFB69E /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		4AFA57C31D5D98D500AFB69E /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
 		4AFA57C51D5DC72D00AFB69E /* TextDrop1Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDrop1Column.swift; sourceTree = "<group>"; };
+		4AFA57C71D5DD00500AFB69E /* ListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
+		4AFA57C91D5DD11100AFB69E /* Donor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Donor.swift; sourceTree = "<group>"; };
 		6DB26FE920A42BA20C6B4D47 /* Pods-ioshubSheets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ioshubSheets.release.xcconfig"; path = "Pods/Target Support Files/Pods-ioshubSheets/Pods-ioshubSheets.release.xcconfig"; sourceTree = "<group>"; };
 		946713CA48BDE90C3AC43C9B /* Pods_ioshubSheets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ioshubSheets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -85,16 +91,51 @@
 			isa = PBXGroup;
 			children = (
 				4AFA57C31D5D98D500AFB69E /* GTMOAuth2ViewTouch.xib */,
-				4AFA57AF1D5D976300AFB69E /* AppDelegate.swift */,
-				4AFA57C51D5DC72D00AFB69E /* TextDrop1Column.swift */,
-				4AFA57C11D5D976C00AFB69E /* Configs.swift */,
-				4AFA57B11D5D976300AFB69E /* ViewController.swift */,
+				4AFA57CE1D5DD4AE00AFB69E /* Globals */,
+				4AFA57CD1D5DD4AA00AFB69E /* Helper */,
+				4AFA57CB1D5DD49C00AFB69E /* Controller */,
+				4AFA57CC1D5DD4A200AFB69E /* Model */,
 				4AFA57B31D5D976300AFB69E /* Main.storyboard */,
 				4AFA57B61D5D976300AFB69E /* Assets.xcassets */,
 				4AFA57B81D5D976300AFB69E /* LaunchScreen.storyboard */,
 				4AFA57BB1D5D976300AFB69E /* Info.plist */,
 			);
 			path = ioshubSheets;
+			sourceTree = "<group>";
+		};
+		4AFA57CB1D5DD49C00AFB69E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4AFA57B11D5D976300AFB69E /* ViewController.swift */,
+				4AB85E3B1D5DDBAF0065455B /* DonorCell.swift */,
+				4AFA57C71D5DD00500AFB69E /* ListController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		4AFA57CC1D5DD4A200AFB69E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4AFA57C91D5DD11100AFB69E /* Donor.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4AFA57CD1D5DD4AA00AFB69E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4AFA57C51D5DC72D00AFB69E /* TextDrop1Column.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		4AFA57CE1D5DD4AE00AFB69E /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				4AFA57AF1D5D976300AFB69E /* AppDelegate.swift */,
+				4AFA57C11D5D976C00AFB69E /* Configs.swift */,
+			);
+			name = Globals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,7 +202,7 @@
 				4AFA57C41D5D98D500AFB69E /* GTMOAuth2ViewTouch.xib in Resources */,
 				4AFA57BA1D5D976300AFB69E /* LaunchScreen.storyboard in Resources */,
 				4AFA57B71D5D976300AFB69E /* Assets.xcassets in Resources */,
-				4AFA57B51D5D976300AFB69E /* Main.storyboard in Resources */,
+				4AFA57D41D5DDA1A00AFB69E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,9 +261,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AFA57CA1D5DD11100AFB69E /* Donor.swift in Sources */,
 				4AFA57B21D5D976300AFB69E /* ViewController.swift in Sources */,
+				4AFA57C81D5DD00500AFB69E /* ListController.swift in Sources */,
 				4AFA57C61D5DC72D00AFB69E /* TextDrop1Column.swift in Sources */,
 				4AFA57B01D5D976300AFB69E /* AppDelegate.swift in Sources */,
+				4AB85E3C1D5DDBAF0065455B /* DonorCell.swift in Sources */,
 				4AFA57C21D5D976C00AFB69E /* Configs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

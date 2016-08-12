@@ -10,22 +10,13 @@ import GoogleAPIClient
 import GTMOAuth2
 import UIKit
 
-class ViewController: UIViewController {
-    
+class ListController: UIViewController {
+    var donorList = [Donor]()
     private let kKeychainItemName = "Google Sheets API1"
     private let kClientID         = sheetClientID
     private let kSpreadSheetID    = "1YLX32uGIJOieuouW_RidrEOmZknyxoPA_sZ5njAHJCw"
-    private var name:String!
-    private var bloodGroup: String!
-    private var contactInfo:String!
-    private var email:String!
     
-    @IBOutlet var indicator: UIActivityIndicatorView!
-    @IBOutlet var tfName: UITextField!
-    @IBOutlet var tfBloodGroup: TextDrop1Column!
-    @IBOutlet var tfContact: UITextField!
-    @IBOutlet var tfEmail: UITextField!
-    
+    @IBOutlet var tableView: UITableView!
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
     private let scopes = ["https://www.googleapis.com/auth/spreadsheets"]
@@ -36,21 +27,19 @@ class ViewController: UIViewController {
     // and initialize the Google Sheets API service
     override func viewDidLoad() {
         super.viewDidLoad()
-        tfBloodGroup.pickerDataArray = ["A+", "A-","B+","B-","O+","O-","AB+","AB-"]
-        
         if let auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName(
             kKeychainItemName,
             clientID: kClientID,
             clientSecret: nil) {
             service.authorizer = auth
         }
-        initiateBlockIfCanAuth(fetchList)
+        self.tableView.tableFooterView = UIView()
     }
     
     // When the view appears, ensure that the Google Sheets API service is authorized
     // and perform API calls
     override func viewDidAppear(animated: Bool) {
-        
+        initiateBlockIfCanAuth(fetchList)
     }
     
     func fetchList() {
@@ -82,66 +71,37 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    @IBAction func send(sender: AnyObject) {
-        if self.tfName.text?.characters.count == 0 ||
-            self.tfEmail.text?.characters.count ==  0 ||
-            self.tfContact.text?.characters.count ==  0 ||
-            self.tfEmail.text?.characters.count == 0 {
-            showAlert("Incomplete Form", message: "Please fill all the form fields!")
-        } else {
-            self.name = self.tfName.text
-            self.contactInfo = self.tfContact.text
-            self.bloodGroup = self.tfBloodGroup.text
-            self.email = self.tfEmail.text
-            initiateBlockIfCanAuth(postData)
-        }
-    }
-    
-    
-    func postData() {
-        let baseUrl = "https://sheets.googleapis.com/v4/spreadsheets"
-        let range = "Sheet1!A1:D1"
-        let url = String(format:"%@/%@/values/%@:append", baseUrl, kSpreadSheetID, range)
-        
-        
-        let params = ["valueInputOption" :"USER_ENTERED"]
-        
-        let gValue:NSMutableDictionary =
-            [
-                "values":
-                    
-                    [
-                        [self.name, self.bloodGroup, self.contactInfo, self.email]
-                ]
-        ]
-        
-        let gtlObject = GTLObject(JSON: gValue)
-        let fullUrl = GTLUtilities.URLWithString(url, queryParameters: params)
-        self.indicator.startAnimating()
-        service.fetchObjectByInsertingObject(gtlObject, forURL: fullUrl) {
-            (ticket, gObj, error) in
-            self.indicator.stopAnimating()
-            if let error = error {
-                self.showAlert("Failure", message: error.localizedDescription)
-                return
-            } else {
-                self.showAlert("Success", message: "Successfully added new record")
-            }
-        }
-    }
-    
     func displayResultWithTicket(ticket: GTLServiceTicket,
                                  finishedWithObject object : GTLObject,
                                                     error : NSError?) {
         
         if let error = error {
-            print(error.localizedDescription)
-            //showAlert("Error", message: error.localizedDescription)
+            
+            showAlert("Error", message: error.localizedDescription)
             return
         }
         
-        print(object.JSON)
+        guard let values = object.JSON["values"] as? NSMutableArray else {
+            return
+        }
+        var count = 0
+        var donors = [Donor]()
+        for value in values {
+            
+            if count != 0 {
+                let strArra = value as! [String]
+                let donor = Donor(name: strArra[0],
+                                  type: strArra[1],
+                                  contactNumber: strArra[2],
+                                  email: strArra[3])
+                
+                donors.append(donor)
+            }
+            
+            count = count + 1
+        }
+        self.donorList = donors
+        self.tableView.reloadData()
         
     }
     
@@ -158,8 +118,6 @@ class ViewController: UIViewController {
         )
     }
     
-    // Handle completion of the authorization process, and update the Google Sheets API
-    // with the new credentials.
     func viewController(vc : UIViewController,
                         finishedWithAuth authResult : GTMOAuth2Authentication, error : NSError?) {
         
@@ -194,4 +152,21 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+}
+
+extension ListController: UITableViewDataSource {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.donorList.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let donor = self.donorList[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("donorCell") as! DonorCell
+        cell.lblName.text = donor.name
+        cell.lblContact.text = donor.contactNumber
+        cell.lblEmail.text = donor.email
+        cell.lblType.text = donor.type
+        return cell
+    }
 }
