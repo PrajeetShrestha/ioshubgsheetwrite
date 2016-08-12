@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     private var bloodGroup: String!
     private var contactInfo:String!
     private var email:String!
+    @IBOutlet var indicator: UIActivityIndicatorView!
     
     @IBOutlet var tfName: UITextField!
     @IBOutlet var tfBloodGroup: TextDrop1Column!
@@ -71,10 +72,12 @@ class ViewController: UIViewController {
         
         let gtlObject = GTLObject(JSON: gValue)
         let fullUrl = GTLUtilities.URLWithString(url, queryParameters: params)
+        self.indicator.startAnimating()
         service.fetchObjectByInsertingObject(gtlObject, forURL: fullUrl) {
             (ticket, gObj, error) in
+            self.indicator.stopAnimating()
             if let error = error {
-                print(error.localizedDescription)
+                 self.showAlert("Failure", message: error.localizedDescription)
                 return
             } else {
                 self.showAlert("Success", message: "Successfully added new record")

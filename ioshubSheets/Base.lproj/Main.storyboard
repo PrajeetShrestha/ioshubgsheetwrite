@@ -54,7 +54,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fub-H3-PWD">
                                 <rect key="frame" x="16" y="250" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWM-sN-Tfy">
                                 <rect key="frame" x="16" y="227" width="31" height="15"/>
@@ -76,9 +76,13 @@
                                     <action selector="send:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fTU-M1-E09"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Z8j-6f-Stn">
+                                <rect key="frame" x="322" y="315" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Z8j-6f-Stn" firstAttribute="centerY" secondItem="6KI-S4-OOy" secondAttribute="centerY" id="0S4-C5-U8W"/>
                             <constraint firstItem="W4V-Mc-Mzj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="0Z2-Xe-ckZ"/>
                             <constraint firstItem="Fub-H3-PWD" firstAttribute="top" secondItem="Zru-NK-LCR" secondAttribute="bottom" constant="30" id="0lg-ou-RfD"/>
                             <constraint firstItem="g1E-4T-OEs" firstAttribute="leading" secondItem="W4V-Mc-Mzj" secondAttribute="leading" id="4ks-PG-frV"/>
@@ -101,11 +105,13 @@
                             <constraint firstItem="fhR-6z-Elk" firstAttribute="trailing" secondItem="W4V-Mc-Mzj" secondAttribute="trailing" id="tRb-4q-9U5"/>
                             <constraint firstItem="W4V-Mc-Mzj" firstAttribute="top" secondItem="g1E-4T-OEs" secondAttribute="bottom" constant="8" id="tma-tN-ilp"/>
                             <constraint firstItem="Zru-NK-LCR" firstAttribute="top" secondItem="fhR-6z-Elk" secondAttribute="bottom" constant="30" id="wbD-kL-jAR"/>
+                            <constraint firstItem="Z8j-6f-Stn" firstAttribute="trailing" secondItem="6KI-S4-OOy" secondAttribute="trailing" id="wni-gc-TFd"/>
                             <constraint firstItem="W4V-Mc-Mzj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ySK-h2-DLe"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="indicator" destination="Z8j-6f-Stn" id="25f-Lu-36O"/>
                         <outlet property="tfBloodGroup" destination="fhR-6z-Elk" id="s07-9g-jH9"/>
                         <outlet property="tfContact" destination="Zru-NK-LCR" id="PHa-ax-6Te"/>
                         <outlet property="tfEmail" destination="Fub-H3-PWD" id="6xq-qr-fJg"/>
