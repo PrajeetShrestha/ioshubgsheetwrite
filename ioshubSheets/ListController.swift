@@ -10,18 +10,14 @@ import UIKit
 import GoogleAPIClient
 
 class ListController: UIViewController {
+    private let service = GlobalGTLService.sharedInstance.service
     var donorList = [Donor]()
     @IBOutlet var tableView: UITableView!
-
-    
-    private let service = GlobalGTLService.sharedInstance.service
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.tableView.tableFooterView = UIView()
         self.fetchList()
-        
     }
     
     func fetchList() {
@@ -70,8 +66,7 @@ class ListController: UIViewController {
         self.tableView.reloadData()
         
     }
-
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -89,13 +84,12 @@ extension ListController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let donor = self.donorList[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("donorCell") as! DonorCell
-        cell.lblName.text = donor.name
+        let donor            = self.donorList[indexPath.row]
+        let cell             = tableView.dequeueReusableCellWithIdentifier("donorCell") as! DonorCell
+        cell.lblName.text    = donor.name
         cell.lblContact.text = donor.contactNumber
-        cell.lblEmail.text = donor.email
-        cell.lblType.text = donor.type
+        cell.lblEmail.text   = donor.email
+        cell.lblType.text    = donor.type
         return cell
     }
 }

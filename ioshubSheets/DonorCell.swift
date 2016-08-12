@@ -10,7 +10,6 @@ import UIKit
 
 class DonorCell: UITableViewCell {
     @IBOutlet var lblName: UILabel!
-
     @IBOutlet var lblContact: UILabel!
     @IBOutlet var lblEmail: UILabel!
     @IBOutlet var lblType: UILabel!
